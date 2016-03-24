@@ -1,4 +1,4 @@
-package com.sjsu.cmpe275.web;
+package com.sjsu.cmpe275.controller;
 
 import java.util.Map;
 
