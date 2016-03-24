@@ -23,4 +23,5 @@ dependencies {
     compile('org.springframework:spring-webmvc:4.1.6.RELEASE')
     compile('javax.servlet:jstl:1.2')
     compile('org.springframework:spring-orm:4.2.5.RELEASE')
+    compile('javax.servlet:jsp-api:2.0')
 }

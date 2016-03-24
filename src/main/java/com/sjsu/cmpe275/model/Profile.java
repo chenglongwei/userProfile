@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(name="firstname", length = 30)
     private String firstname;
@@ -30,11 +30,11 @@ public class Profile {
     @Column(name="aboutmyself", length = 100)
     private String aboutMyself;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
