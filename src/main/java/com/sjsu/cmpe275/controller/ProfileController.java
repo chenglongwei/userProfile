@@ -1,5 +1,6 @@
 package com.sjsu.cmpe275.controller;
 
+import com.sjsu.cmpe275.exception.ProfileException;
 import com.sjsu.cmpe275.model.Profile;
 import com.sjsu.cmpe275.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,8 +45,7 @@ public class ProfileController {
         // If null, no user profile exists.
         if (profile == null) {
             String message = "Sorry, the requested user with ID " + id + " does not exist.";
-            model.addAttribute("message", message);
-            return "error";
+            throw new ProfileException(message);
         }
 
         // Whether readonly or editable.
@@ -78,8 +78,7 @@ public class ProfileController {
         if (bindingResult.hasErrors()) {
             model.addAllAttributes(bindingResult.getModel());
             String message = "Create or update user with ID " + id + " Error.";
-            model.addAttribute("message", message);
-            return "error";
+            throw new ProfileException(message);
         }
 
         Profile profile = new Profile();
