@@ -1,47 +1,38 @@
-<c:import url="/WEB-INF/views/common/layout.jsp" charEncoding="UTF-8">
-    <c:param name="title" value="PERSON FORM" />
-    <c:param name="body">
-        <spring:hasBindErrors name="person">
-            <script type="text/javascript">
-                $(document).ready(function() {
-                    $("div.control-group>div.controls>.error").parent().parent().addClass("error");
-                });
-            </script>
-        </spring:hasBindErrors>
-        <form:form method="post" action="." modelAttribute="person"
-            cssClass="form-horizontal">
-            <fieldset>
-                <legend>Person</legend>
-                <div class="control-group">
-                    <label class="control-label" for="firstname">name</label>
-                    <div class="controls">
-                        <form:input path="name" cssClass="span5"
-                            cssErrorClass="error" />
-                        <form:errors path="name"
-                            cssClass="error help-inline inline"
-                            element="span" />
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="lastname">age</label>
-                    <div class="controls">
-                        <form:input path="age" cssClass="span3"
-                            cssErrorClass="error" />
-                        <form:errors path="age"
-                            cssClass="error help-inline inline"
-                            element="span" />
-                    </div>
-                </div>
-                <form:hidden path="id" />
-                <div class="form-actions">
-                    <input type="submit" class="btn btn-primary"
-                        value="Submit">&nbsp;
-                    <button type="reset" class="btn">Cancel</button>
-                </div>
-            </fieldset>
-        </form:form>
-        <hr>
-        <a href='${pageContext.request.contextPath}/profile/list' class="btn">list</a>
-    </c:param>
-</c:import>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ page session="false" %>
+<html>
+<head>
+    <title>Group 6: Profile</title>
+    <style type="text/css">
+        .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+        .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+        .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+        .tg .tg-4eph{background-color:#f9f9f9}
+    </style>
+</head>
+<body>
+<h1>
+    Group 6: Profile
+</h1>
 
+<br>
+<h3>
+    Profile Query Result
+</h3>
+
+<!-- todo: update modelAttribute name and attribute name-->
+<pre modelAttribute="profile">
+    <c:out value="User ID: ${profile.id}"/>
+    <c:out value="First Name: ${profile.firstname}"/>
+    <c:out value="Last Name: ${profile.lastname}"/>
+    <c:out value="Email: ${profile.email}"/>
+    <c:out value="Address: ${profile.address}"/>
+    <c:out value="Organization: ${profile.organization}"/>
+    <c:out value="AboutMyself: ${profile.aboutMyself}"/>
+</pre>
+
+
+</body>
+</html>

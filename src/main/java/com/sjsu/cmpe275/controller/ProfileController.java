@@ -18,14 +18,13 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 
 @Controller
-@RequestMapping("/profile")
 public class ProfileController {
     @Autowired
     ProfileService service;
     private static final int DEFAULT_PAGE_NUM = 0;
     private static final int DEFAULT_PAGE_SIZE = 15;
 
-    @RequestMapping(value = "/list")
+    @RequestMapping(value = "/profile/list")
     public String list(@RequestParam(value = "page", required = false) Integer page,
                        Model model) {
         int pageNum = page != null ? page : DEFAULT_PAGE_NUM;
@@ -35,7 +34,7 @@ public class ProfileController {
     }
 
     // Update or Delete one user profile.
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/profile/{id}", method = RequestMethod.GET)
     public String edit(@PathVariable("id") long id,
                        @RequestParam(value = "brief", required = false, defaultValue = "false") String brief,
                        Model model) {
@@ -57,15 +56,13 @@ public class ProfileController {
     }
 
     // Create user profile.
-    @RequestMapping(value = "/")
+    @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public String create() {
         return "profile/create";
     }
 
     // Insert or update user profile.
-    @RequestMapping(value = "/{id}",
-            params = {"firstname", "lastname", "email", "address", "organization", "aboutmyself"},
-            method = RequestMethod.POST)
+    @RequestMapping(value = "/profile/{id}", method = RequestMethod.POST)
     public String create(@PathVariable("id") long id,
                          @RequestParam(value = "firstname") String firstname,
                          @RequestParam(value = "lastname") String lastname,
@@ -100,13 +97,14 @@ public class ProfileController {
     }
 
     // Delete a profile.
-    @RequestMapping(value = "/{userID}")
+    // Todo Delete method
+    @RequestMapping(value = "/profile/delete/{userID}", method = RequestMethod.GET)
     public String delete(
             @RequestParam(value = "page", required = false) Integer page,
             @PathVariable("userID") long id) {
 
         service.deleteById(id);
 
-        return "redirect:/";
+        return "redirect:/profile";
     }
 }
