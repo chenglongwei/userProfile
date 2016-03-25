@@ -1,1 +1,3 @@
-404 Not found.
+Page not exist.
+
+<a href="/"> Visit Home Page </a>

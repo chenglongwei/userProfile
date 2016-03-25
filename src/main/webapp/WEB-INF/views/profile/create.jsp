@@ -23,65 +23,78 @@
 </h3>
 
 <!-- todo: Modify the action value -->
-<%--<c:url var="createProfile" value="/profile/${id}?firstname=${firstname}&lastname=${lastname}&email=${email}&address=${address}&organization=${organization}&aboutMyself=${aboutMyself}" />--%>
-<c:url var="createProfile" value="/profile"+<%=request.getParameter("id")%>?firstname=<%=request.getParameter("firstname")%>" />
+<c:url var="createProfile" value="/profile/${profile.id}" ></c:url>
 <!-- todo: Modify the modelAttribute name -->
-<form:form action="${createProfile}" method="post">
+<form:form action="${createProfile}" modelAttribute="profile">
     <table>
         <tr>
             <td>
-                id
+                <form:label path="id">
+                    <spring:message text="ID"/>
+                </form:label>
             </td>
             <td>
-                <input name="id"/>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                firstname
-            </td>
-            <td>
-                <input name="firstname" />
+                <form:input path="id"/>
             </td>
         </tr>
         <tr>
             <td>
-                lastname
+                <form:label path="firstname">
+                    <spring:message text="FirstName"/>
+                </form:label>
             </td>
             <td>
-                <input name="lastname" />
+                <form:input path="firstname" />
+            </td> 
+        </tr>
+        <tr>
+            <td>
+                <form:label path="lastname">
+                    <spring:message text="LastName"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="lastname" />
             </td>
         </tr>
         <tr>
             <td>
-                email
+                <form:label path="email">
+                    <spring:message text="Email"/>
+                </form:label>
             </td>
             <td>
-                <input name="email" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                address
-            </td>
-            <td>
-                <input name ="address" />
+                <form:input path="email" />
             </td>
         </tr>
         <tr>
             <td>
-                organization
+                <form:label path="address">
+                    <spring:message text="Address"/>
+                </form:label>
             </td>
             <td>
-                <input name="organization" />
+                <form:input path="address" />
             </td>
         </tr>
         <tr>
             <td>
-                aboutMyself
+                <form:label path="organization">
+                    <spring:message text="Organization"/>
+                </form:label>
             </td>
             <td>
-                <input name="aboutMyself" />
+                <form:input path="organization" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form:label path="aboutMyself">
+                    <spring:message text="AboutMyself"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="aboutMyself" />
             </td>
         </tr>
         <tr>
