@@ -1,5 +1,5 @@
 create database userProfile;
 
-create table profile (id integer primary key AUTO_INCREMENT, firstname varchar(30), lastname varchar(30), email varchar(50), address varchar(50), organization varchar (50), aboutMyself varchar(100));
+create table profile (id varchar(50) primary key, firstname varchar(50), lastname varchar(50), email varchar(50), address varchar(50), organization varchar (50), aboutMyself varchar(100));
 
-insert into profile(firstname, lastname) values ('chenglong', 'wei');
+insert into profile(id, firstname, lastname) values ('1001', ''chenglong', 'wei');

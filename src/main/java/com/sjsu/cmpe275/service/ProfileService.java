@@ -4,17 +4,18 @@ import com.sjsu.cmpe275.model.Profile;
 import org.springframework.data.domain.Page;
 
 /**
- * Created by chenglongwei on 3/24/16.
+ * @author chenglongwei
+ * @version 1.0
+ * @since 2016-03-24
+ * ProfileService interface
  */
 
 public interface ProfileService {
-    Page<Profile> findAll(int page, int size);
-
-    Profile findById(long id);
+    Profile findById(String id);
 
     Profile insert(Profile profile);
 
     Profile update(Profile profile);
 
-    void deleteById(long id);
+    void deleteById(String id);
 }

@@ -11,28 +11,25 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Created by chenglongwei on 3/24/16.
+ * @author chenglongwei
+ * @version 1.0
+ * @since 2016-03-24
+ * Implements ProfileService interface.
  */
 
 @Service
 public class ProfileServiceImpl implements ProfileService {
+    /**
+     * Auto wire a profile repository, @see com.sjsu.cmpe275.repository.ProfileRepository.
+     * The repository deal with database read/write/delete/update.
+     */
     @Autowired
     ProfileRepository repository;
 
     @Override
     @Transactional(readOnly = true)
-    public Page<Profile> findAll(int page, int size) {
-        Pageable pageable = new PageRequest(page, size, new Sort(
-                Sort.Direction.DESC, "id"));
-        Page<Profile> profiles = repository.findAll(pageable);
-        return profiles;
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public Profile findById(long id) {
-        Profile profile = repository.findOne(id);
-        return profile;
+    public Profile findById(String id) {
+        return repository.findOne(id);
     }
 
     @Override
@@ -44,12 +41,13 @@ public class ProfileServiceImpl implements ProfileService {
     @Override
     @Transactional
     public Profile update(Profile profile) {
+        repository.delete(profile.getId());
         return repository.save(profile);
     }
 
     @Override
     @Transactional
-    public void deleteById(long id) {
+    public void deleteById(String id) {
         repository.delete(id);
     }
 }

@@ -1,7 +1,11 @@
 package com.sjsu.cmpe275.exception;
 
 /**
- * Created by chenglongwei on 3/24/16.
+ * @author chenglongwei
+ * @version 1.2
+ * @since 2016-03-24
+ * When GET/DELETE a nonexistence user profile, ProfileException will be thrown and a page will
+ * show the exceptionMsg.
  */
 public class ProfileException extends RuntimeException {
     private String exceptionMsg;

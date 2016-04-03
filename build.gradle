@@ -7,8 +7,8 @@ war {
     version = '1.0'
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 repositories {
     mavenLocal()
@@ -22,5 +22,5 @@ dependencies {
     compile('org.springframework:spring-webmvc:4.1.6.RELEASE')
     compile('javax.servlet:jstl:1.2')
     compile('org.springframework:spring-orm:4.2.5.RELEASE')
-    compile('javax.servlet:jsp-api:2.0')
+    compile('javax.servlet:servlet-api:2.5')
 }

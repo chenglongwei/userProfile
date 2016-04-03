@@ -1,4 +1,6 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%--This directive causes the JSP compiler to generate the exception instance variable.
+Otherwise an exception from a DELETE/PUT will be failed, since JSPs only permit GET POST or HEAD --%>
+<%@ page isErrorPage="true" %>
 <html>
 <head>
     <title>User Profile Exception Handling</title>

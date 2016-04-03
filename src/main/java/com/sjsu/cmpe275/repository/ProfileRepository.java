@@ -6,8 +6,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- * Created by chenglongwei on 3/24/16.
+ * @author chenglongwei
+ * @version 1.0
+ * @since 2016-03-24
+ * <p>
+ * ProfileRepository will deal with database data C.R.U.D.
  */
-public interface ProfileRepository extends CrudRepository<Profile, Long> {
-    Page<Profile> findAll(Pageable pageable);
+public interface ProfileRepository extends CrudRepository<Profile, String> {
 }

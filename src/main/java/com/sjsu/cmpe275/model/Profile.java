@@ -3,38 +3,41 @@ package com.sjsu.cmpe275.model;
 import javax.persistence.*;
 
 /**
- * Created by chenglongwei on 3/24/16.
+ * @author chenglongwei
+ * @version 1.2
+ * @since 2016-03-24
+ * Profile bean, id is primary key.
  */
 @Entity
 @Table(name = "profile")
 public class Profile {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(name = "id", length = 50)
+    private String id;
 
-    @Column(name="firstname", length = 30)
+    @Column(name = "firstname", length = 50)
     private String firstname;
 
-    @Column(name="lastname", length = 30)
+    @Column(name = "lastname", length = 50)
     private String lastname;
 
-    @Column(name="email", length = 50)
+    @Column(name = "email", length = 50)
     private String email;
 
-    @Column(name="address", length = 50)
+    @Column(name = "address", length = 50)
     private String address;
 
-    @Column(name="organization", length = 50)
+    @Column(name = "organization", length = 50)
     private String organization;
 
-    @Column(name="aboutmyself", length = 100)
+    @Column(name = "aboutmyself", length = 150)
     private String aboutMyself;
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
