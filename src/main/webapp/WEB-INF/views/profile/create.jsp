@@ -89,7 +89,7 @@
         // Stop form from submitting normally
         event.preventDefault();
         if (!$("#id").val()) {
-            //Todo alter
+            alert("Please input ID");
             return;
         }
 
