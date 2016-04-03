@@ -5,12 +5,7 @@
 <html>
 <head>
     <title>Group 6: Profile</title>
-    <style type="text/css">
-        .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
-        .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
-        .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
-        .tg .tg-4eph{background-color:#f9f9f9}
-    </style>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
 <h1>
@@ -22,94 +17,122 @@
     Profile Query Result
 </h3>
 
-<!-- todo: Modify the action value -->
-<c:url var="updateProfile" value="/profile/${profile.id}" ></c:url>
 <!-- todo: Modify the modelAttribute  -->
-<form:form action="${updateProfile}" modelAttribute="profile">
+<form id="updateForm" action="/profile" modelAttribute="profile">
     <table>
         <tr>
             <td>
-                <form:label path="id">
-                    <spring:message text="ID"/>
-                </form:label>
+                ID
             </td>
             <td>
-                <form:input path="id" readonly="true" size="8"  disabled="true" />
-                <form:hidden path="id" />
+                <%--<input type="text" id="id" value="${profile.id}" readonly="true"><br>--%>
+                <input type="text" id="id" value="${profile.id}"><br>
             </td>
         </tr>
         <tr>
             <td>
-                <form:label path="firstname">
-                    <spring:message text="FirstName"/>
-                </form:label>
+                FirstName
             </td>
             <td>
-                <form:input path="firstname" />
-            </td> 
-        </tr>
-        <tr>
-            <td>
-                <form:label path="lastname">
-                    <spring:message text="LastName"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="lastname" />
+                <input type="text" name="firstname" value="${profile.firstname}"><br>
             </td>
         </tr>
         <tr>
             <td>
-                <form:label path="email">
-                    <spring:message text="Email"/>
-                </form:label>
+                LastName
             </td>
             <td>
-                <form:input path="email" />
+                <input type="text" name="lastname" value="${profile.lastname}"><br>
             </td>
         </tr>
         <tr>
             <td>
-                <form:label path="address">
-                    <spring:message text="Address"/>
-                </form:label>
+                Email
             </td>
             <td>
-                <form:input path="address" />
+                <input type="text" name="email" value="${profile.email}"><br>
             </td>
         </tr>
         <tr>
             <td>
-                <form:label path="organization">
-                    <spring:message text="Organization"/>
-                </form:label>
+                Address
             </td>
             <td>
-                <form:input path="organization" />
+                <input type="text" name="address" value="${profile.address}"><br>
             </td>
         </tr>
         <tr>
             <td>
-                <form:label path="aboutMyself">
-                    <spring:message text="AboutMyself"/>
-                </form:label>
+                Organization
             </td>
             <td>
-                <form:input path="aboutMyself" />
+                <input type="text" name="organization" value="${profile.organization}"><br>
             </td>
         </tr>
         <tr>
             <td>
-                <input type="submit" value="<spring:message text="Update"/>" />
+                AboutMyself
             </td>
             <td>
-                <!-- todo: update the modelAttribute name profile -->
-                <input type="button" value="Delete"
-                       onClick="javascript:location.href = '<c:url value="delete/${profile.id}" />';" />
+                <input type="text" name="aboutMyself" value="${profile.aboutMyself}"><br>
             </td>
+        </tr>
+        <tr>
+            <td>
+                <input name="update" type="submit" value="Update">
+            </td>
+            <%--<td>--%>
+                <%--&lt;%&ndash;<input name="delete" type="submit" value="Delete">&ndash;%&gt;--%>
+                    <%--<input type = "button" id="deleteButton" value = "delete">--%>
+
+            <%--</td>--%>
         </tr>
     </table>
-</form:form>
+    <%--<div>--%>
+        <%--<input type = "button" id="deleteButton" value = "delete">--%>
+    <%--</div>--%>
+</form>
+
+<form id="updateHiddenForm" action="/userProfile%2D2%2E0/profile" method="post"/>
+
+<form id="deleteHiddenForm" action="/userProfile%2D2%2E0/profile" method="post">
+    <input type="hidden" name="_method" value="delete">
+</form>
+
+<script type="text/javascript">
+    // Attach a submit handler to the form
+    $("#updateForm").submit(function(event) {
+        // Stop form from submitting normally
+        event.preventDefault()
+        var params = {};
+        $("#updateForm input").each(function(index) {
+            if (this.name != "id" && this.type != "submit") {
+                params[this.name] = this.value;
+            }
+        });
+
+        $("#updateHiddenForm").attr("action", $("#updateHiddenForm").attr("action") + "/" + $("#id").val() + "?" + $.param(params));
+        $("#updateHiddenForm").submit();
+    });
+
+    // Attach a submit handler to the form
+//    $("#deleteButton").click(function(event) {
+//        // Stop form from submitting normally
+//        event.preventDefault();
+//        alert("hkk");
+//        $("#deleteHiddenForm").attr("action", $("#deleteHiddenForm").attr("action") + "/" + $("#id").val());
+//        $("#deleteHiddenForm").submit();
+//        alert("aaa");
+//    });
+</script>
+
+<%--<form id="deleteForm" action="/userProfile%2D2%2E0/profile" method="delete" modelAttribute="profile">--%>
+    <%--<td>--%>
+        <%--&lt;%&ndash;<input name="delete" type="submit" value="Delete">&ndash;%&gt;--%>
+            <%--<input type="hidden" name="_method" value="delete">--%>
+    <%--</td>--%>
+
+<%--</form>--%>
 
 
 </body>

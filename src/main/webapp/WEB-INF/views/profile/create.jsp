@@ -1,6 +1,7 @@
 <html>
 <head>
     <title>Group 6: Profile</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
 <h1>
@@ -13,84 +14,103 @@
     Create A New Profile
 </h3>
 
-<form:form action="profile">
+<form id="profileForm" action="/profile" method="post">
     <table>
         <tr>
             <td>
-                <form:label path="id"/>
+                ID
             </td>
             <td>
-                <form:input path="id"/>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form:label path="firstname">
-                    <spring:message text="FirstName"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="firstname"/>
+                <input type="text" id="id" ><br>
             </td>
         </tr>
         <tr>
             <td>
-                <form:label path="lastname">
-                    <spring:message text="LastName"/>
-                </form:label>
+                FirstName
             </td>
             <td>
-                <form:input path="lastname"/>
+                <input type="text" name="firstname"><br>
             </td>
         </tr>
         <tr>
             <td>
-                <form:label path="email">
-                    <spring:message text="Email"/>
-                </form:label>
+                LastName
             </td>
             <td>
-                <form:input path="email"/>
+                <input type="text" name="lastname""><br>
             </td>
         </tr>
         <tr>
             <td>
-                <form:label path="address">
-                    <spring:message text="Address"/>
-                </form:label>
+                Email
             </td>
             <td>
-                <form:input path="address"/>
+                <input type="text" name="email"><br>
             </td>
         </tr>
         <tr>
             <td>
-                <form:label path="organization">
-                    <spring:message text="Organization"/>
-                </form:label>
+                Address
             </td>
             <td>
-                <form:input path="organization"/>
+                <input type="text" name="address" ><br>
             </td>
         </tr>
         <tr>
             <td>
-                <form:label path="aboutMyself">
-                    <spring:message text="AboutMyself"/>
-                </form:label>
+                Organization
             </td>
             <td>
-                <form:input path="aboutMyself"/>
+                <input type="text" name="organization" ><br>
             </td>
         </tr>
         <tr>
             <td>
-                <input type="submit" value="<spring:message text="Create"/>"/>
+                AboutMyself
+            </td>
+            <td>
+                <input type="text" name="aboutMyself" ><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Create">
             </td>
         </tr>
     </table>
-</form:form>
+    <%--ID: <input type="text" id="id"><br>--%>
+    <%--First Name: <input type="text" name="firstname"><br>--%>
+    <%--Last Name: <input type="text" name="lastname"><br>--%>
+    <%--Email: <input type="text" name="email"><br>--%>
+    <%--Address: <input type="text" name="address"><br>--%>
+    <%--Organization: <input type="text" name="organization"><br>--%>
+    <%--About Myself: <input type="text" name="aboutMyself"><br>--%>
+</form>
+
+<%--<form id="hiddenForm" action="/profile" method="post"/>--%>
+<form id="hiddenForm" action="/userProfile%2D2%2E0/profile" method="post"/>
 
 
+<script type="text/javascript">
+    // Attach a submit handler to the form
+    $("#profileForm").submit(function(event) {
+        // Stop form from submitting normally
+        event.preventDefault();
+        if (!$("#id").val()) {
+            //Todo alter
+            return;
+        }
+
+        var params = {};
+        $("#profileForm input").each(function(index) {
+            if (this.name != "id" && this.type != "submit") {
+                params[this.name] = this.value;
+            }
+        });
+
+        $("#hiddenForm").attr("action", $("#hiddenForm").attr("action") + "/" + $("#id").val() + "?" + $.param(params));
+        $("#hiddenForm").submit();
+    });
+</script>
 </body>
 </html>
