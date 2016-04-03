@@ -25,6 +25,15 @@ public class ProfileController {
     ProfileService service;
 
     /**
+     * The index page will display the profile creation page.
+     * @return creation profile page.
+     */
+    @RequestMapping(value = "/")
+    public String index() {
+        return "profile/create_bak";
+    }
+
+    /**
      * Get a profile as HTML or Get a profile as plain text.
      * <p>
      * If the brief paras if not set this returns an HTML that renders the given user’s profile.
