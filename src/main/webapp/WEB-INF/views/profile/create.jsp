@@ -1,7 +1,6 @@
 <html>
 <head>
     <title>Group 6: Profile</title>
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
 <h1>
@@ -11,7 +10,7 @@
 <br>
 
 <h3>
-    Create A New Profile
+    Create or Update A New Profile
 </h3>
 
 <form id="profileForm" action="/profile" method="post">
@@ -21,7 +20,7 @@
                 ID
             </td>
             <td>
-                <input type="text" id="id" ><br>
+                <input type="text" id="id"><br>
             </td>
         </tr>
         <tr>
@@ -37,7 +36,7 @@
                 LastName
             </td>
             <td>
-                <input type="text" name="lastname""><br>
+                <input type="text" name="lastname"><br>
             </td>
         </tr>
         <tr>
@@ -53,7 +52,7 @@
                 Address
             </td>
             <td>
-                <input type="text" name="address" ><br>
+                <input type="text" name="address"><br>
             </td>
         </tr>
         <tr>
@@ -61,7 +60,7 @@
                 Organization
             </td>
             <td>
-                <input type="text" name="organization" ><br>
+                <input type="text" name="organization"><br>
             </td>
         </tr>
         <tr>
@@ -69,7 +68,7 @@
                 AboutMyself
             </td>
             <td>
-                <input type="text" name="aboutMyself" ><br>
+                <input type="text" name="aboutMyself"><br>
             </td>
         </tr>
         <tr>
@@ -78,22 +77,15 @@
             </td>
         </tr>
     </table>
-    <%--ID: <input type="text" id="id"><br>--%>
-    <%--First Name: <input type="text" name="firstname"><br>--%>
-    <%--Last Name: <input type="text" name="lastname"><br>--%>
-    <%--Email: <input type="text" name="email"><br>--%>
-    <%--Address: <input type="text" name="address"><br>--%>
-    <%--Organization: <input type="text" name="organization"><br>--%>
-    <%--About Myself: <input type="text" name="aboutMyself"><br>--%>
 </form>
 
-<%--<form id="hiddenForm" action="/profile" method="post"/>--%>
-<form id="hiddenForm" action="/userProfile%2D2%2E0/profile" method="post"/>
+<form id="hiddenForm" action="/profile" method="post">
+</form>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript">
     // Attach a submit handler to the form
-    $("#profileForm").submit(function(event) {
+    $("#profileForm").submit(function (event) {
         // Stop form from submitting normally
         event.preventDefault();
         if (!$("#id").val()) {
@@ -102,8 +94,8 @@
         }
 
         var params = {};
-        $("#profileForm input").each(function(index) {
-            if (this.name != "id" && this.type != "submit") {
+        $("#profileForm input").each(function (index) {
+            if (this.id != "id" && this.name != "id" && this.type != "submit") {
                 params[this.name] = this.value;
             }
         });

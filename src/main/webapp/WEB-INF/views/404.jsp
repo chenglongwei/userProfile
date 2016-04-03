@@ -1,3 +1,2 @@
 Page not exist.
-
-<a href="/"> Visit Home Page </a>
+<a href="/"> Create Profile Page </a>

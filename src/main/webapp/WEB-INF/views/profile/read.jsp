@@ -22,7 +22,6 @@
     Profile Query Result
 </h3>
 
-<!-- todo: update modelAttribute name and attribute name-->
 <pre modelAttribute="profile">
     <c:out value="User ID: ${profile.id}"/>
     <c:out value="First Name: ${profile.firstname}"/>

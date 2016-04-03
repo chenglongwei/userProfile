@@ -30,7 +30,7 @@ public class ProfileController {
      */
     @RequestMapping(value = "/")
     public String index() {
-        return "profile/create_bak";
+        return "profile/create";
     }
 
     /**
@@ -82,7 +82,7 @@ public class ProfileController {
      */
     @RequestMapping(value = "/profile", method = {RequestMethod.GET, RequestMethod.DELETE})
     public String create() {
-        return "profile/create_bak";
+        return "profile/create";
     }
 
     /**

@@ -49,6 +49,16 @@
         <location>/WEB-INF/views/generic_error.jsp</location>
     </error-page>
 
+    <!--To handle browsers that not support HTTP1.1 method using _method hidden form-->
+    <filter>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <servlet-name>appServlet</servlet-name>
+    </filter-mapping>
+
     <filter>
         <filter-name>getMethodConvertingFilter</filter-name>
         <filter-class>com.sjsu.cmpe275.GetMethodConvertingFilter</filter-class>
