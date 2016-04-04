@@ -11,10 +11,6 @@
 
     <annotation-driven/>
 
-    <resources mapping="/img/**" location="/img/"/>
-    <resources mapping="/css/**" location="/css/"/>
-    <resources mapping="/js/**" location="/js/"/>
-
     <beans:bean
             class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <beans:property name="prefix" value="/WEB-INF/views/"/>
