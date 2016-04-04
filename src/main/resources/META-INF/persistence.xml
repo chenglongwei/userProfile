@@ -4,6 +4,7 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
     <persistence-unit name="persistenceUnit"
                       transaction-type="RESOURCE_LOCAL">
+        <class>com.sjsu.cmpe275.model.Profile</class>
         <properties>
             <property name="hibernate.jdbc.batch_size" value="30"/>
             <property name="hibernate.use_sql_comments" value="true"/>

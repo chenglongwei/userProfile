@@ -1,8 +1,6 @@
 package com.sjsu.cmpe275.repository;
 
 import com.sjsu.cmpe275.model.Profile;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 
 /**

@@ -41,7 +41,6 @@ public class ProfileServiceImpl implements ProfileService {
     @Override
     @Transactional
     public Profile update(Profile profile) {
-        repository.delete(profile.getId());
         return repository.save(profile);
     }
 
