@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 
-@ContextConfiguration(locations = "classpath*:test-context.xml")
+@ContextConfiguration(locations = "classpath:test-context.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 public class ProfileServiceImplTest {
@@ -27,9 +27,10 @@ public class ProfileServiceImplTest {
 
     @Before
     public void setUp() throws Exception {
+        profileRepository.deleteAll();
         for (int i = 1; i <= 20; i++) {
             Profile p = new Profile();
-            p.setId("testId" + i);
+            p.setId("testID" + i);
             p.setFirstname("name" + i);
             profileRepository.save(p);
         }
@@ -37,10 +38,6 @@ public class ProfileServiceImplTest {
 
     @After
     public void tearDown() throws Exception {
-        for(int i = 1; i <= 20; i++) {
-            profileRepository.delete("testId" + i);
-        }
-        profileRepository.delete("testId" + 50);
     }
 
     @Test
@@ -64,17 +61,18 @@ public class ProfileServiceImplTest {
 
     @Test
     public void testUpdate() {
-        Profile p = profileService.findById("1");
+        Profile p = profileService.findById("testID" + 2);
         p.setFirstname("changeName");
         profileService.update(p);
-        p = profileService.findById("1");
+
+        p = profileService.findById("testID" + 2);
         assertEquals("changeName", p.getFirstname());
     }
 
     @Test
     public void testDeleteById() {
-        profileService.deleteById("1");
-        Profile p = profileService.findById("1");
+        profileService.deleteById("testID" + 3);
+        Profile p = profileService.findById("testID" + 3);
         assertNull(p);
     }
 }

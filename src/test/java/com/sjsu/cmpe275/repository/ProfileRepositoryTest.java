@@ -12,7 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-@ContextConfiguration(locations = "classpath*:test-context.xml")
+@ContextConfiguration(locations = "classpath:test-context.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 public class ProfileRepositoryTest {
@@ -21,6 +21,7 @@ public class ProfileRepositoryTest {
 
     @Before
     public void setUp() {
+        profileRepository.deleteAll();
         for (int i = 1; i <= 20; i++) {
             Profile p = new Profile();
             p.setId("testId" + i);
